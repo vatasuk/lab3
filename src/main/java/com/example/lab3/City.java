@@ -1,14 +1,17 @@
 package com.example.lab3;
 
 public class City {
-    private int pop, status, id;
+    private int pop, id;
     private String name;
+
+    public City() {
+
+    }
 
     @Override
     public String toString() {
         return "City{" +
                 "pop=" + pop +
-                ", status=" + status +
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 '}';
@@ -22,13 +25,6 @@ public class City {
         this.pop = pop;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     public int getId() {
         return id;
@@ -46,9 +42,8 @@ public class City {
         this.name = name;
     }
 
-    public City(int id, String name, int pop, int status) {
+    public City(int id, String name, int pop) {
         this.pop = pop;
-        this.status = status;
         this.id = id;
         this.name = name;
     }

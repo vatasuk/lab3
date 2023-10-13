@@ -55,20 +55,20 @@
                             <Label text="Площадь парка" GridPane.rowIndex="3" />
                             <Label text="НАличие водоемов" GridPane.rowIndex="4" />
                             <Label text="Дата основания парка" GridPane.rowIndex="5" />
-                            <Label text="Label" GridPane.columnIndex="1" />
-                            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <Label fx:id="cName" text="Label" GridPane.columnIndex="1" />
+                            <Label fx:id="cPop" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="pName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label fx:id="pS" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label fx:id="pW" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <Label fx:id="pDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         </children>
                     </GridPane>
                     <ButtonBar layoutX="-8.0" layoutY="544.0" prefHeight="40.0" prefWidth="664.0">
                         <buttons>
                             <Button mnemonicParsing="false" text="Новый парк" />
-                            <Button mnemonicParsing="false" text="Удалить" />
-                            <Button mnemonicParsing="false" text="Редактировать" />
-                            <Button mnemonicParsing="false" text="Новый город" />
+                            <Button mnemonicParsing="false" onAction="#handleDeleteCity" text="Удалить" />
+                            <Button mnemonicParsing="false" onAction="#handleEditCity" text="Редактировать" />
+                            <Button mnemonicParsing="false" onAction="#handleNewCity" text="Новый город" />
                         </buttons>
                     </ButtonBar>
                 </children></AnchorPane>
