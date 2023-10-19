@@ -3,24 +3,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab3.OverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab3.OverviewController">
    <children>
-    <SplitPane dividerPositions="0.3316633266533066" layoutX="-163.0" layoutY="84.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.3316633266533066" layoutX="-163.0" layoutY="84.0" prefHeight="400.0" prefWidth="600.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="50.0">
                 <children>
-                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="398.0" prefWidth="296.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                                 <children>
-                                    <TableView fx:id="cityTable" layoutY="24.0" prefHeight="294.0" prefWidth="326.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+                                    <TableView fx:id="cityTable" layoutY="24.0" prefHeight="294.0" prefWidth="326.0" styleClass="background" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
                                         <columns>
                                             <TableColumn fx:id="citynamecol" prefWidth="325.0" text="Город" />
                                         </columns>
                                     </TableView>
                                 </children>
                             </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                                 <children>
                                     <TableView prefHeight="295.0" prefWidth="494.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                         <columns>
@@ -53,7 +53,7 @@
                             <Label text="Население города" GridPane.rowIndex="1" />
                             <Label text="Парк" GridPane.rowIndex="2" />
                             <Label text="Площадь парка" GridPane.rowIndex="3" />
-                            <Label text="НАличие водоемов" GridPane.rowIndex="4" />
+                            <Label text="Наличие водоемов" GridPane.rowIndex="4" />
                             <Label text="Дата основания парка" GridPane.rowIndex="5" />
                             <Label fx:id="cName" text="Label" GridPane.columnIndex="1" />
                             <Label fx:id="cPop" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
