@@ -174,7 +174,7 @@ public class MainApp extends Application {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             CityListWrapper wrapper = new CityListWrapper();
             wrapper.setcities(cities);
-            m.marshal(wrapper, (Result) file);
+            m.marshal(wrapper, file);
 
 
             setCityFilePath(file);
