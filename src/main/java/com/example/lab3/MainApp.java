@@ -1,4 +1,6 @@
 package com.example.lab3;
+import java.util.prefs.Preferences;
+import java.io.File;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.beans.Observable;
@@ -6,11 +8,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Result;
+
 public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -33,17 +43,29 @@ public class MainApp extends Application {
     }
     public void initRootLayout() {
         try {
-
+            // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
+            loader.setLocation(MainApp.class
+                    .getResource("RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
-
+            // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+
+            // Даём контроллеру доступ к главному прилодению.
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        // Пытается загрузить последний открытый файл с адресатами.
+        File file = getCityFilePath();
+        if (file != null) {
+            loadPersonDataFromFile(file);
         }
     }
     public void showCityOverview() {
@@ -94,5 +116,68 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
+    }
+    public File getCityFilePath() {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        String filePath = prefs.get("filePath", null);
+        if (filePath != null) {
+            return new File(filePath);
+        } else {
+            return null;
+        }
+    }
+
+
+    public void setCityFilePath(File file) {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        if (file != null) {
+            prefs.put("filePath", file.getPath());
+
+
+            primaryStage.setTitle("AddressApp - " + file.getName());
+        } else {
+            prefs.remove("filePath");
+
+            primaryStage.setTitle("AddressApp");
+        }
+    }
+    public void loadPersonDataFromFile(File file) {
+        try {
+            JAXBContext context = JAXBContext
+                    .newInstance(CityListWrapper.class);
+            Unmarshaller um = context.createUnmarshaller();
+
+
+            CityListWrapper wrapper = (CityListWrapper) um.unmarshal(file);
+
+            cities.clear();
+            cities.addAll(wrapper.getcities());
+
+
+            setCityFilePath(file);
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file:\n" + file.getPath());
+
+            alert.showAndWait();
+        }
+    }
+
+
+    public void saveCityDataToFile(File file) throws JAXBException {
+
+            JAXBContext context = JAXBContext.newInstance(CityListWrapper.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            CityListWrapper wrapper = new CityListWrapper();
+            wrapper.setcities(cities);
+            m.marshal(wrapper, (Result) file);
+
+
+            setCityFilePath(file);
+
     }
 }

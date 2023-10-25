@@ -49,11 +49,11 @@ public class CityEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (nameTF.getText() == null || nameTF.getText().length() == 0) {
+        if (nameTF.getText() == null || nameTF.getText().isEmpty()) {
             errorMessage += "Неправильное имя!\n";
         }
 
-        if (popTF.getText() == null || popTF.getText().length() == 0) {
+        if (popTF.getText() == null || popTF.getText().isEmpty()) {
             errorMessage += "Неправильное население\n";
         } else {
 
@@ -64,7 +64,7 @@ public class CityEditDialogController {
             }
         }
 
-        if (errorMessage.length() == 0) {
+        if (errorMessage.isEmpty()) {
             return true;
         } else {
 
